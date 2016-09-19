@@ -7,3 +7,6 @@ default['elastic']['data_dir'] = '/srv/elasticsearch/data'
 default['elastic']['log_dir'] = '/srv/elasticsearch/logs'
 default['elastic']['cluster'] = 'elk-production'
 default['elastic']['minimum_mast_nodes'] = 1 # Set to (number of nodes / 2 + 1)
+
+default['logstash']['log_dir'] = '/srv/logstash/logs'
+default['logstash']['beats_port'] = 5044

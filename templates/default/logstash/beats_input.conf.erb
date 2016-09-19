@@ -1,0 +1,6 @@
+input {
+  beats {
+    port => <%= node['logstash']['beats_port'] %>
+    tags => ["beats"]
+  }
+}

@@ -1,0 +1,25 @@
+# Managed by Chef!
+# Any updates will be overwritten
+
+[Unit]
+Description=Logstash
+Documentation=https://www.elastic.co/guide/en/logstash/current/index.html
+Requires=elasticsearch.service
+
+[Service]
+Environment=LS_HOME=/var/lib/logstash
+Environment=LS_HEAP_SIZE=1g
+Environment=LS_CONF_DIR=/etc/logstash/conf.d
+Environment=LS_LOG_DIR=<%= node['logstash']['log_dir'] %>
+Environment=LS_LOG_FILE="${LS_LOG_DIR}/logstash.log"
+Environment=LS_OPEN_FILES=16384
+Environment=LS_NICE=19
+EnvironmentFile=-/etc/default/logstash
+
+User=logstash
+Group=logstash
+
+ExecStart=/opt/logstash/bin/logstash agent --config ${LS_CONF_DIR} --log ${LS_LOG_FILE}
+
+[Install]
+WantedBy=multi-user.target

@@ -17,6 +17,7 @@ suites:
     run_list:
       - recipe[elk::default]
       - recipe[elk::elasticsearch]
+      - recipe[elk::logstash]
     verifier:
       inspec_tests:
         - test/recipes

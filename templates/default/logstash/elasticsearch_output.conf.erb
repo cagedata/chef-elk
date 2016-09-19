@@ -1,0 +1,15 @@
+output {
+  if ("beats" in [tags]) {
+    elasticsearch {
+      hosts => ['<%= "#{node['elastic']['host']}:#{node['elastic']['http_port']}" %>']
+      sniffing => true
+      manage_template => false
+      index => "%{[@metadata][beat]}-%{+YYYY.MM.dd}"
+      document_type => "%{[@metadata][type]}"
+    }
+  } else {
+    elasticsearch {
+      hosts => ['<%= "#{node['elastic']['host']}:#{node['elastic']['http_port']}" %>']
+    }
+  }
+}
