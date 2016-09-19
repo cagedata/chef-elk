@@ -5,11 +5,9 @@ license 'all_rights'
 description 'Installs/Configures elk'
 long_description 'Installs/Configures elk'
 version '0.1.0'
+source_url 'https://github.com/cagedata/chef-elk'
+issues_url 'https://github.com/cagedata/chef-elk/issues'
 
-# If you upload to Supermarket you should set this so your cookbook
-# gets a `View Issues` link
-# issues_url 'https://github.com/<insert_org_here>/elk/issues' if respond_to?(:issues_url)
-
-# If you upload to Supermarket you should set this so your cookbook
-# gets a `View Source` link
-# source_url 'https://github.com/<insert_org_here>/elk' if respond_to?(:source_url)
+depends 'yum', '~> 4.0.0'
+depends 'firewall', '~> 2.5.2'
+depends 'selinux', '~> 0.9.0'

@@ -2,7 +2,7 @@
 # Cookbook Name:: elk
 # Spec:: default
 #
-# Copyright (c) 2016 The Authors, All Rights Reserved.
+# Copyright (c) 2016 Dave Long, All Rights Reserved.
 
 require 'spec_helper'
 
