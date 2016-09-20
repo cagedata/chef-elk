@@ -2,7 +2,7 @@
 # Cookbook Name:: elk
 # Recipe:: elasticsearch
 #
-# Copyright (c) 2016 Dave Long, All Rights Reserved.
+# Copyright (c) 2016 Cage Data, All Rights Reserved.
 
 package 'java-1.8.0-openjdk'
 
@@ -37,6 +37,7 @@ template '/etc/elasticsearch/elasticsearch.yml' do
   notifies :restart, 'service[elasticsearch]', :delayed
 end
 
+# TODO: Need to get firewall working
 # firewall_rule 'elasticsearch' do
 #   port node['elastic']['http_port']
 #   command :allow

@@ -1,4 +1,4 @@
-# Managed by Chef!
+# Managed by Chef! Last updated: <%= Time.now %>
 # Any updates will be overwritten
 
 [Unit]
@@ -12,14 +12,13 @@ Environment=LS_HEAP_SIZE=1g
 Environment=LS_CONF_DIR=/etc/logstash/conf.d
 Environment=LS_LOG_DIR=<%= node['logstash']['log_dir'] %>
 Environment=LS_LOG_FILE="${LS_LOG_DIR}/logstash.log"
-Environment=LS_OPEN_FILES=16384
 Environment=LS_NICE=19
 EnvironmentFile=-/etc/default/logstash
 
 User=logstash
 Group=logstash
 
-ExecStart=/opt/logstash/bin/logstash agent --config ${LS_CONF_DIR} --log ${LS_LOG_FILE}
+ExecStart=/opt/logstash/bin/logstash agent --config ${LS_CONF_DIR}
 
 [Install]
 WantedBy=multi-user.target

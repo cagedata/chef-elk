@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: .
+# Cookbook Name:: elk
 # Spec:: default
 #
-# Copyright (c) 2016 Dave Long, All Rights Reserved.
+# Copyright (c) 2016 Cage Data, All Rights Reserved.
 
 require 'spec_helper'
 
@@ -29,6 +29,8 @@ describe 'elk::logstash' do
     it 'creates the logstash configs' do
       expect(chef_run)
         .to create_template '/etc/logstash/conf.d/02-beats-input.conf'
+      expect(chef_run)
+        .to create_template '/etc/logstash/conf.d/10-syslog-filter.conf'
       expect(chef_run)
         .to create_template '/etc/logstash/conf.d/30-elasticsearch-output.conf'
     end

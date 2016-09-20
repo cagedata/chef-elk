@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: .
+# Cookbook Name:: elk
 # Recipe:: logstash
 #
-# Copyright (c) 2016 Dave Long, All Rights Reserved.
+# Copyright (c) 2016 Cage Data, All Rights Reserved.
 
 ###
 # Handlers
@@ -35,16 +35,20 @@ end
 
 template '/etc/logstash/conf.d/02-beats-input.conf' do
   source 'logstash/beats_input.conf.erb'
-  user 'root'
-  group 'root'
+  user 'logstash'
+  group 'logstash'
   mode '0644'
   notifies :restart, 'service[logstash]', :delayed
 end
 
+template '/etc/logstash/conf.d/10-syslog-filter.conf' do
+  source 'logstash/syslog_filter.conf.erb'
+end
+
 template '/etc/logstash/conf.d/30-elasticsearch-output.conf' do
   source 'logstash/elasticsearch_output.conf.erb'
-  user 'root'
-  group 'root'
+  user 'logstash'
+  group 'logstash'
   mode '0644'
   notifies :restart, 'service[logstash]', :delayed
 end
