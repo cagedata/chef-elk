@@ -3,7 +3,6 @@ driver:
   name: vagrant
 
 provisioner:
-  # name: chef_shell
   name: chef_zero
 
 verifier:
