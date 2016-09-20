@@ -64,3 +64,11 @@ end
 service 'logstash' do
   action [:start, :enable]
 end
+
+# Block for a little while to let Logstash startup
+# Ignore the hackiness... stupid Java
+ruby_block 'wait_for_logstash' do
+  block { sleep 30 }
+  action :nothing
+  subscribes :run, 'service[logstash]', :immediately
+end

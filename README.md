@@ -1,4 +1,3 @@
-# elk
+# Chef ELK
 
-TODO: Enter the cookbook description here.
-
+A cookbook for building out an ELK server to gather metrics from other systems.
